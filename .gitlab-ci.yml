@@ -1,0 +1,46 @@
+stages:
+  - build
+  - deploy
+
+app-test-and-build:
+  image: agoncaruks/nx-cli
+  stage: build
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+  environment:
+    name: $ENV
+  cache:
+    paths:
+      - node_modules/
+  script:
+    - npm install --quiet
+    - npm run test $APP
+    - nx run $APP:build:$ENV
+  artifacts:
+    paths:
+      - dist/
+
+client-deploy:
+  image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base
+  stage: deploy
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "web" && $APP == "user-client"'
+  environment:
+    name: $ENV
+  script:
+    - aws s3 rm s3://wiseguy-client-$ENV --recursive
+    - aws s3 cp ./dist/apps/$APP s3://wiseguy-client-$ENV --recursive
+
+api-deploy:
+  image: agoncaruks/aws-elastic-beanstalk-cli
+  stage: deploy
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "web" && $APP == "user-api"'
+  before_script:
+    - git checkout $ENV
+  environment:
+    name: $ENV
+  script:
+    - python -m zipfile -c package.zip dist/apps/user-api/main.js dist/apps/user-api/package.json dist/apps/user-api/package-lock.json deploy/Procfile
+    - eb deploy WiseguyUserApi-$ENV
+

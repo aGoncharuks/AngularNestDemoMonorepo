@@ -1,0 +1,17 @@
+<mat-selection-list [multiple]="false">
+  <mat-list-option *ngFor="let order of orders"
+                    (click)="emitSelectOrder(order._id)">
+    <mat-icon mat-list-icon>{{config.displayNameMap[order[config.displayNameField]]}}</mat-icon>
+    <div mat-line class="order-text">
+      <div class="order-info">
+        <div>{{(order.subType || order.type) | uppercase}}</div>
+        <div>{{(order.price || order.maximumPrice) | currency}}</div>
+      </div>
+      <div class="order-actions">
+        <mat-icon class="order-action-btn" (click)="emitEditOrder(order._id); $event.stopPropagation()">edit</mat-icon>
+        <mat-icon class="order-action-btn"
+                  (click)="emitDeleteOrder(order); $event.stopPropagation()">delete</mat-icon>
+      </div>
+    </div>
+  </mat-list-option>
+</mat-selection-list>

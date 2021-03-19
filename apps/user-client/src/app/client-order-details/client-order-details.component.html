@@ -1,0 +1,9 @@
+<ng-container *ngIf="order">
+  <img class="selected-image"
+       src="{{order.images[0]}}"
+       alt="Selected Image">
+  <div class="order-fields-wrapper">
+      <div class="order-field">{{order.propertyType | titlecase}}</div>
+      <div class="order-field">{{order.price | currency}}</div>
+  </div>
+</ng-container>

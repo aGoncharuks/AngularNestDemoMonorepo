@@ -1,0 +1,35 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@wise-guy/api-stack": ["libs/api-stack/src/index.ts"],
+      "@wise-guy/data": ["libs/data/src/index.ts"],
+      "@wise-guy/client-auth": ["libs/client-auth/src/index.ts"],
+      "@wise-guy/api-auth": ["libs/api-auth/src/index.ts"],
+      "@wise-guy/client-notifications": [
+        "libs/client-notifications/src/index.ts"
+      ],
+      "@wise-guy/api-notifications": ["libs/api-notifications/src/index.ts"],
+      "@wise-guy/api-global": ["libs/api-global/src/index.ts"],
+      "@wise-guy/api-db": ["libs/api-db/src/index.ts"],
+      "@wise-guy/api-order": ["libs/api-order/src/index.ts"],
+      "@wise-guy/config": ["libs/config/src/index.ts"],
+      "@wise-guy/client-shared": ["libs/client-shared/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

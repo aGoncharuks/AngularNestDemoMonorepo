@@ -1,0 +1,76 @@
+{
+  "npmScope": "wise-guy",
+  "implicitDependencies": {
+    "workspace.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "projects": {
+    "user-client": {
+      "tags": []
+    },
+    "user-client-e2e": {
+      "tags": [],
+      "implicitDependencies": ["user-client"]
+    },
+    "admin-client": {
+      "tags": []
+    },
+    "admin-client-e2e": {
+      "tags": [],
+      "implicitDependencies": ["admin-client"]
+    },
+    "user-api": {
+      "tags": []
+    },
+    "admin-api": {
+      "tags": []
+    },
+    "api-stack": {
+      "tags": []
+    },
+    "data": {
+      "tags": []
+    },
+    "client-auth": {
+      "tags": []
+    },
+    "api-auth": {
+      "tags": []
+    },
+    "client-notifications": {
+      "tags": []
+    },
+    "api-notifications": {
+      "tags": []
+    },
+    "api-global": {
+      "tags": []
+    },
+    "api-db": {
+      "tags": []
+    },
+    "api-order": {
+      "tags": []
+    },
+    "config": {
+      "tags": []
+    },
+    "client-shared": {
+      "tags": []
+    }
+  }
+}

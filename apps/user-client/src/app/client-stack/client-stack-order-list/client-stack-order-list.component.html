@@ -1,0 +1,26 @@
+<mat-card *ngFor="let order of stack"
+          class="order-short-info">
+  <mat-card-header>
+    <mat-card-title>
+      <div class="order-title-left">
+        <div class="order-price">{{(order.subType || order.type) | titlecase}}</div>
+        <div class="match-for-wrapper">
+          <div class="match-for-text">match for </div>
+          <mat-icon
+            class="match-for"
+            [matTooltip]="matchFor._id"
+            *ngFor="let matchFor of order.matchFor">{{config.displayNameMap[matchFor.displayName]}}</mat-icon>
+        </div>
+      </div>
+      <div class="order-title-right">
+        <button mat-button>Contact</button>
+        <button mat-button>Book a Tour</button>
+      </div>
+    </mat-card-title>
+  </mat-card-header>
+  <img (click)="emitOrderSelect(order)"
+       mat-card-image
+       class="order-image"
+       src="{{order.images[0]}}"
+       alt="Order Image">
+</mat-card>

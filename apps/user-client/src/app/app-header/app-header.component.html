@@ -1,0 +1,28 @@
+<header class="app-header">
+  <nav mat-tab-nav-bar>
+    <ng-container *ngIf="authService.loggedIn">
+      <a mat-tab-link *ngFor="let page of pages"
+       (click)="activePage = page"
+       [active]="activePage == page"
+       [routerLink]="[page.route]">{{page.nameText}}</a>
+    </ng-container>
+  </nav>
+  <div class="app-action">
+    <ng-container *ngIf="authService.loggedIn && authService.userProfile$ | async as userProfile; else logIn">
+      <div class="action-text"
+           (click)="authService.logout()">{{userProfile?.name}}
+        <mat-icon class="action-button"
+                  aria-hidden="false"
+                  aria-label="Sign Out">exit_to_app</mat-icon>
+      </div>
+    </ng-container>
+  </div>
+</header>
+<ng-template #logIn>
+  <div class="action-text"
+       (click)="authService.login()">Sign In
+    <mat-icon class="action-button"
+              aria-hidden="false"
+              aria-label="Sign In">exit_to_app</mat-icon>
+  </div>
+</ng-template>

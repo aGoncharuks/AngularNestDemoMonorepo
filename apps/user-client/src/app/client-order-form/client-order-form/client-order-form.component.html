@@ -1,0 +1,7 @@
+<form [formGroup]="form" (ngSubmit)="submitOrder()">
+  <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
+  <button mat-button
+          color="primary"
+          type="submit"
+          [disabled]="form.invalid">Submit</button>
+</form>

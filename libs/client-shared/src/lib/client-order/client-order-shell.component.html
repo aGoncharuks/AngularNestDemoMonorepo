@@ -1,0 +1,4 @@
+<app-order-form
+  [order]="order$ | async"
+  (newOrder)="onNewOrder($event)"
+  (replaceOrder)="onReplaceOrder($event)"></app-order-form>

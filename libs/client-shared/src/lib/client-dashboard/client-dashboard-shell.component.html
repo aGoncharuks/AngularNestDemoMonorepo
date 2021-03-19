@@ -1,0 +1,5 @@
+<app-dashboard-order-list
+  [orders]="orders$ | async"
+  (selectOrder)="onSelectOrder($event)"
+  (editOrder)="onEditOrder($event)"
+  (deleteOrder)="onDeleteOrder($event)"></app-dashboard-order-list>

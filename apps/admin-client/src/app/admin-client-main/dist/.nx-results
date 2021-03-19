@@ -1,0 +1,6 @@
+{
+  "command": "build",
+  "results": {
+    "admin-client": false
+  }
+}

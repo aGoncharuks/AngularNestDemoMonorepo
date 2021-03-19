@@ -1,0 +1,25 @@
+:host {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 50px);
+}
+
+.container {
+  flex: 1;
+  height: 100%;
+}
+
+.order-full-info-container {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .order-list-container {
+    flex: 3;
+  }
+
+  .order-full-info-container {
+    display: flex;
+    flex: 5;
+  }
+}

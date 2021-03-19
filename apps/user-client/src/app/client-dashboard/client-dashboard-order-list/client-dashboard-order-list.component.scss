@@ -1,0 +1,23 @@
+mat-selection-list mat-list-option {
+  .order-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .order-actions {
+    display: none;
+  }
+
+  &:hover,
+  &.mat-list-single-selected-option {
+    .order-actions {
+      display: block;
+    }
+  }
+
+  .order-action-btn {
+    padding: 10px;
+    margin: 0 5px;
+  }
+}

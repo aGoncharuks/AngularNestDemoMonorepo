@@ -1,0 +1,10 @@
+<app-stack-order-list
+  class="order-list-container container"
+  [stack]="$stack | async"
+  [config]="config"
+  (orderSelect)="onOrderSelect($event)">
+</app-stack-order-list>
+<app-order-details
+  [order]="selectedOrder"
+  class="order-full-info-container container">
+</app-order-details>
